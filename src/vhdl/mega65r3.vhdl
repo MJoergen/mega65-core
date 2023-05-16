@@ -35,7 +35,7 @@ use UNISIM.VComponents.all;
 
 entity container is
   Port ( CLK_IN : STD_LOGIC;         
-         reset_from_max10 : inout  STD_LOGIC;
+         reset_from_max10 : out  STD_LOGIC;
 --         irq : in  STD_LOGIC;
 --         nmi : in  STD_LOGIC;
          
@@ -44,7 +44,7 @@ entity container is
          ----------------------------------------------------------------------
 
          -- Interface for physical keyboard
-         kb_io0 : inout std_logic;
+         kb_io0 : out std_logic;
          kb_io1 : out std_logic;
          kb_io2 : in std_logic;
          kb_tck : out std_logic := '0';
@@ -223,7 +223,7 @@ entity container is
          f_rdata : in std_logic;
          f_diskchanged : in std_logic;
 
-         led : inout std_logic;
+         led : out std_logic;
 
          ----------------------------------------------------------------------
          -- I2S speaker audio output

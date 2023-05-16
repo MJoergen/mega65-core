@@ -229,11 +229,11 @@ entity gs4510 is
     ---------------------------------------------------------------------------
     -- fast IO port (clocked at core clock). 1MB address space
     ---------------------------------------------------------------------------
-    fastio_addr : inout std_logic_vector(19 downto 0) := (others => '0');
+    fastio_addr : buffer std_logic_vector(19 downto 0) := (others => '0');
     fastio_addr_fast : out std_logic_vector(19 downto 0) := (others => '0');
-    fastio_read : inout std_logic := '0';
-    fastio_write : inout std_logic := '0';
-    fastio_wdata : inout std_logic_vector(7 downto 0) := (others => '0');
+    fastio_read : buffer std_logic := '0';
+    fastio_write : buffer std_logic := '0';
+    fastio_wdata : buffer std_logic_vector(7 downto 0) := (others => '0');
     fastio_rdata : in std_logic_vector(7 downto 0);
     hyppo_rdata : in std_logic_vector(7 downto 0);
     hyppo_address_out : out std_logic_vector(13 downto 0) := (others => '0');
@@ -257,7 +257,7 @@ entity gs4510 is
 
     -- Fast read interface for slow devices linear reading
     -- (presents only the next available byte)
-    slow_prefetched_request_toggle : inout std_logic := '0';
+    slow_prefetched_request_toggle : out std_logic := '0';
     slow_prefetched_data : in unsigned(7 downto 0) := x"00";
     slow_prefetched_address : in unsigned(26 downto 0) := (others => '1');
 

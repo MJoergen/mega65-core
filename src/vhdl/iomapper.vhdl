@@ -26,7 +26,7 @@ entity iomapper is
 
         accessible_row : out integer range 0 to 255 := 255;
         accessible_key : out unsigned(6 downto 0) := to_unsigned(127,7);
-        dim_shift : inout std_logic := '0';
+        dim_shift : out std_logic := '0';
 
         protected_hardware_in : in unsigned(7 downto 0);
         virtualised_hardware_in : in unsigned(7 downto 0);
@@ -67,14 +67,14 @@ entity iomapper is
 
         j21in : in std_logic_vector(11 downto 0);
         j21out : inout std_logic_vector(11 downto 0);
-        j21ddr : inout std_logic_vector(11 downto 0);
+        j21ddr : out std_logic_vector(11 downto 0) := (others => '0');
 
         uart_char : out unsigned(7 downto 0);
         uart_char_valid : out std_logic := '0';
         uart_monitor_char : out unsigned(7 downto 0);
         uart_monitor_char_valid : out std_logic := '0';
 
-        buffereduart_rx : inout std_logic_vector(7 downto 0) := (others => 'H');
+        buffereduart_rx : in std_logic_vector(7 downto 0) := (others => '1');
         buffereduart_tx : out std_logic_vector(7 downto 0) := (others => '1');
         buffereduart_ringindicate : in std_logic_vector(7 downto 0);
 
@@ -265,7 +265,7 @@ entity iomapper is
         hdmi_sda : inout std_logic;
         hpd_a : inout std_logic;
 
-        uart_rx : inout std_logic := 'H';
+        uart_rx : in std_logic := '0';
         uart_tx : out std_logic;
 
         raster_number : in unsigned(11 downto 0);
